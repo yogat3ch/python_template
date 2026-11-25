@@ -1,5 +1,46 @@
+# --- Python & uv ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- Secrets & Credentials ---
 .env
-.credentials/
-.venv
-logs
-__pycache__
+.env.*
+!.env.example
+.credentials/*
+!.credentials/.gitkeep
+*.pem
+*.key
+*.p12
+
+# --- Cached Media & Generated Outputs ---
+assets/*
+!assets/.gitkeep
+output/*
+!output/.gitkeep
+
+# --- Data (uncomment below if storing large raw files in data/) ---
+# data/*
+# !data/.gitkeep
+
+# --- OS & Editor Junk ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
