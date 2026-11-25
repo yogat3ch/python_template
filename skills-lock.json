@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "skills": {
+    "python-patterns": {
+      "source": "../../../.agents/packs/python-general",
+      "sourceType": "local",
+      "computedHash": "2771a46d843b25e27277c1acf10d1748fc75850ad3c2549dea3597db9354b0e6"
+    }
+  }
+}
