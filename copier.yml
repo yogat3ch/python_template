@@ -1,0 +1,62 @@
+# copier.yml
+_min_copier_version: "9.0.0"
+
+# --- Prompts ---
+project_name:
+  type: str
+  help: Project name (e.g., customer-churn-model)
+
+package_name:
+  type: str
+  default: "{{ project_name.lower().replace('-', '_').replace(' ', '_') }}"
+  help: Python package/module folder name
+
+description:
+  type: str
+  default: "A Python project."
+  help: Short project description
+
+python_version:
+  type: str
+  default: "3.12"
+  help: Target Python version for uv
+
+# --- Files & patterns excluded from generated projects ---
+_exclude:
+  # Template-only files
+  - "copier.yml"
+  - ".TEMPLATE_GUIDE.md"
+  - ".git"
+
+  # Python & uv artifacts
+  - ".venv"
+  - "__pycache__"
+  - "*.py[cod]"
+  - ".pytest_cache"
+  - ".ruff_cache"
+  - ".mypy_cache"
+
+  # Secrets & local test files (keeps .gitkeep placeholders intact)
+  - ".env"
+  - ".env.*"
+  - "!.env.example"
+  - ".credentials/*"
+  - "!.credentials/.gitkeep"
+  - "assets/*"
+  - "!assets/.gitkeep"
+  - "output/*"
+  - "!output/.gitkeep"
+
+  # OS & Editor files
+  - ".DS_Store"
+  - ".vscode"
+  - ".idea"
+
+
+# --- Post-generation tasks (runs inside the new project directory) ---
+_tasks:
+  - "uv python pin {{ python_version }}"
+  - "uv sync"
+  - "git init"
+  - "git add ."
+  - "git commit -m 'Initial commit from python_template'"
